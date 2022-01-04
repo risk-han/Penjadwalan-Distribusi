@@ -8,13 +8,12 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    @if(Auth::check())
+                        {{ __('You are logged in')}}
+                    @else
+                        {{ __('You are not logged in')}}
                     @endif
 
-                    {{ __('You are logged in!') }}
                 </div>
             </div>
         </div>
