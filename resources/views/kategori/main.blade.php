@@ -5,12 +5,12 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 mt-3">
-            <button onclick="load_input('{{route('barang.create')}}');" style="float: right;" class="btn btn-primary mb-3" type="button">
-                Tambah Barang
+            <button onclick="load_input('{{ route('kategori.create') }}')" style="float: right;" class="btn btn-primary mb-3" type="button">
+                Tambah Kategori Barang
             </button>
             </div>
             <div class="col-md-12">
-                <h2 class="text-center m-4">Daftar Barang</h2>
+                <h2 class="text-center m-4">Daftar Kategori Barang</h2>
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title mt-3">

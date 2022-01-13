@@ -4,63 +4,39 @@
             <div class="card">
                 <h4 class="modal-title">Tambah Pesanan Baru</h4>
                     <div class="form-group">
-                        <label class="form-label"for="nama_Pemesan">Nama Pemesan</label>
-                        <input type="text" class="form-control form-control-solid" name="nama_Pemesan" id="nama_Pemesan" value="{{$barang->nama_Pemesan}}">
+                        <label class="form-label"for="nama_barang">Nama Barang</label>
+                        <input type="text" class="form-control form-control-solid" name="nama_barang" id="nama_barang" value="{{$barang->nama_barang}}">
                     </div>
                     <div class="form-group">
-                        <label  class="form-label"for="id_penanganan">Jenis Penanganan</label>
-                        <select name="id_penanganan" name="id_penanganan" class="form-select" aria-label="Default select example">
-                            <option>Pilih Jenis Penanganan</option>
+                        <label class="form-label"for="berat_barang">Berat Barang</label>
+                        <input type="number" class="form-control form-control-solid" name="berat_barang" id="berat_barang" value="{{$barang->berat_barang}}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"for="stok">Stok Barang</label>
+                        <input type="number" class="form-control form-control-solid" name="stok" id="stok" value="{{$barang->stok}}">
+                    </div>
+                    <div class="form-group">
+                        <label  class="form-label"for="kategori_barang">Kategori Barang</label>
+                        <select name="kategori_barang" name="kategori_barang" class="form-select" aria-label="Default select example">
+                            <option>Pilih Kategori Barang</option>
+                            @foreach($kategori as $kt)
+                            <option value="{{$kt->id}}" {{$kt->id==$barang->id_kategori ? 'selected' : ''}}>{{ $kt->nama_kategori }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-label"for="id_jenis_tempat">Jenis Tempat</label>
-                        <select name="id_jenis_tempat" name="id_jenis_tempat" class="form-select" aria-label="Default select example">
-                            <option>Pilih Jenis Tempat</option>
+                        <label  class="form-label"for="supplier_barang">Supplier Barang</label>
+                        <select name="supplier_barang" name="supplier_barang" class="form-select" aria-label="Default select example">
+                            <option>Pilih Supplier Barang</option>
+                            @foreach($supplier as $s)
+                            <option value="{{$s->id}}" {{$s->id==$barang->id_supplier ? 'selected' : ''}}>{{ $s->nama_supplier }}</option>
+                            @endforeach
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label"for="panjang">Panjang Area</label>
-                        <input type="number" class="form-control form-control-solid" name="panjang" id="panjang" value="{{$barang->panjang}}">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label"for="lebar">Lebar Area</label>
-                        <input type="number" class="form-control form-control-solid" name="lebar" id="lebar" value="{{$barang->lebar}}">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label"for="alamat">Alamat Pemesan</label>
-                        <input type="text" class="form-control form-control-solid" name="alamat" id="alamat" value="{{$barang->alamat}}">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label"for="tanggal_pengerjaan">Tanggal Pengerjaan</label>
-                        <input type="date" class="form-control form-control-solid" name="tanggal_pengerjaan" value="{{$barang->tanggal_pengerjaan}}">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label"for="no_telp">Nomor Telepon Pemesan</label>
-                        <input type="text" class="form-control form-control-solid" name="no_telp" value="{{$barang->no_telp}}">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label"for="email">Email</label>
-                        <input type="text" class="form-control form-control-solid" name="email" value="{{$barang->email}}">
-                    </div>
-                    @if($barang->id)
-                    <div class="form-group">
-                        <label class="form-label"for="status">Status</label>
-                        <select name="status" name="status" class="form-select" aria-label="Default select example">
-                            @if($barang->status == 'Pending')
-                            <option>Pilih Status</option>
-                                <option value="{{ $barang->status }}" Selected>{{ $barang->status }}</option>
-                                <option value="selesai">Selesai</option>
-                                @else
-                                <option value="selesai" selected>Selesai</option>
-                                @endif
-                        </select>
-                    </div>
-                    @endif
                 </div>
         </div>
             @if($barang->id)
-            <button type="button" class="btn btn-success" onclick="handle_save('#SubmitCreateArticleForm','#form-tambah','{{route('barang.update',$barang->id)}}','PUT','Update')" id="SubmitCreateArticleForm">Simpan</button>
+            <button type="button" class="btn btn-success" onclick="handle_save('#SubmitCreateArticleForm','#form-tambah','{{route('barang.update',$barang->id)}}','PUT','Update')" id="SubmitCreateArticleForm">Ubah</button>
             @else
             <div class="mb-0">
             <button type="button" class="btn btn-success" onclick="handle_save('#SubmitCreateArticleForm','#form-tambah','{{route('barang.store')}}','POST','Kirim')" id="SubmitCreateArticleForm">Simpan</button>
