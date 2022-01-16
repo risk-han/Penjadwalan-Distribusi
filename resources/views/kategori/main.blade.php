@@ -5,6 +5,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 mt-3">
+                <form id="content_filter">
+                    <input class="form-control" type="text" name="keywords" id="keywords" placeholder="Cari kategori">
+                </form>
             <button onclick="load_input('{{ route('kategori.create') }}')" style="float: right;" class="btn btn-primary mb-3" type="button">
                 Tambah Kategori Barang
             </button>

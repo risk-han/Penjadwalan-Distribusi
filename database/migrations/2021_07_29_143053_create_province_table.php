@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSuppliersTable extends Migration
+class CreateProvinceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateSuppliersTable extends Migration
      */
     public function up()
     {
-        Schema::create('suppliers', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_supplier');
-            $table->integer('city_id')->nullable();
-            $table->integer('province_id')->nullable();
-            $table->timestamps();
+        Schema::create('provinces', function (Blueprint $table) {
+            $table->id('province_id');
+            $table->string('province_name');
         });
     }
 
@@ -29,6 +26,6 @@ class CreateSuppliersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('suppliers');
+        Schema::dropIfExists('provinces');
     }
 }

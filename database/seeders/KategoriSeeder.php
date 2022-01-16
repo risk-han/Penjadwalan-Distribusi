@@ -22,7 +22,7 @@ class KategoriSeeder extends Seeder
                 'nama_kategori' => 'Simpan di tempat sejuk'
             ],
             [
-                'nama_kategori' => 'Tangani dengan hari hati'
+                'nama_kategori' => 'Tangani dengan hati hati'
             ],
             [
                 'nama_kategori' => 'Jangan Diinjak'

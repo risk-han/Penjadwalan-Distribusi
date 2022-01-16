@@ -17,30 +17,30 @@ class SupplierSeeder extends Seeder
         $data = array(
             [
                 'nama_supplier' => 'Unilever',
-                'kota_supplier' => 'Medan',
-                'provinsi_supplier' => 'Sumatera Utara'
+                'city_id' => 278,
+                'province_id' => 34
             ],
             [
                 'nama_supplier' => 'Pepsodent',
-                'kota_supplier' => 'Jakarta',
-                'provinsi_supplier' => 'DKI Jakarta'
+                'city_id' => 153,
+                'province_id' => 6
             ],
             [
                 'nama_supplier' => 'Tupperware',
-                'kota_supplier' => 'Yogyakarta',
-                'provinsi_supplier' => 'DI Yogyakarta'
+                'city_id' => 501,
+                'province_id' => 5
             ],
             [
                 'nama_supplier' => 'Yamaha',
-                'kota_supplier' => 'Aceh',
-                'provinsi_supplier' => 'Nagroe Aceh Darussalam'
+                'city_id' => 20,
+                'province_id' => 21
             ],
         );
         foreach($data as $d){
             Supplier::create([
                 'nama_supplier' => $d['nama_supplier'],
-                'kota_supplier' => $d['kota_supplier'],
-                'provinsi_supplier' => $d['provinsi_supplier']
+                'city_id' => $d['city_id'],
+                'province_id' => $d['province_id']
             ]);
         }
     }

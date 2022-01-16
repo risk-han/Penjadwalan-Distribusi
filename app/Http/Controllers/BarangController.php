@@ -18,7 +18,8 @@ class BarangController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $collection = Barang::get();
+            $keywords = $request->keywords;
+            $collection = Barang::where('nama_barang','like','%' . $keywords.'%')->get();
             return view('barang.list',compact('collection'));
         }
         return view('barang.main');
@@ -34,6 +35,7 @@ class BarangController extends Controller
     public function store(Request $request, Barang $barang)
     {
         $validator = Validator::make($request->all(), [
+            'kode_barang' => 'required',
             'nama_barang' => 'required',
             'berat_barang' => 'required',
             'stok' => 'required',
@@ -43,7 +45,13 @@ class BarangController extends Controller
 
         if ($validator->fails()) {
             $errors = $validator->errors();
-            if ($errors->has('nama_barang')) {
+            if ($errors->has('kode_barang')) {
+                return response()->json([
+                    'alert' => 'error',
+                    'message' => $errors->first('kode_barang'),
+                ]);
+            } 
+            else if ($errors->has('nama_barang')) {
                 return response()->json([
                     'alert' => 'error',
                     'message' => $errors->first('nama_barang'),
@@ -71,6 +79,7 @@ class BarangController extends Controller
             }
         }
         $barang = new Barang;
+        $barang->kode_barang = $request->kode_barang;
         $barang->nama_barang = $request->nama_barang;
         $barang->berat_barang= $request->berat_barang;
         $barang->stok= $request->stok;
@@ -99,6 +108,7 @@ class BarangController extends Controller
     public function update(Request $request, Barang $barang)
     {
         $validator = Validator::make($request->all(), [
+            'kode_barang' => 'required',
             'nama_barang' => 'required',
             'berat_barang' => 'required',
             'stok' => 'required',
@@ -108,7 +118,13 @@ class BarangController extends Controller
 
         if ($validator->fails()) {
             $errors = $validator->errors();
-            if ($errors->has('nama_barang')) {
+            if ($errors->has('kode_barang')) {
+                return response()->json([
+                    'alert' => 'error',
+                    'message' => $errors->first('kode_barang'),
+                ]);
+            }
+            else if ($errors->has('nama_barang')) {
                 return response()->json([
                     'alert' => 'error',
                     'message' => $errors->first('nama_barang'),
@@ -135,6 +151,7 @@ class BarangController extends Controller
                 ]);
             }
         }
+        $barang->kode_barang = $request->kode_barang;
         $barang->nama_barang = $request->nama_barang;
         $barang->berat_barang= $request->berat_barang;
         $barang->stok= $request->stok;
@@ -148,8 +165,12 @@ class BarangController extends Controller
         ]);
     }
 
-    public function destroy($id)
+    public function destroy(Barang $barang)
     {
-        
+        $barang->delete();
+        return response()->json([
+            'alert' => 'success',
+            'message' => 'Supplier ' . $barang->nama_barang . ' Terhapus',
+        ]);
     }
 }

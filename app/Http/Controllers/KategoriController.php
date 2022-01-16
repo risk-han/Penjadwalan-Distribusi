@@ -16,7 +16,8 @@ class KategoriController extends Controller
     public function index(Request $request)
     {
         if($request->ajax()){
-            $kategori = Kategori::get();
+            $keywords = $request->keywords;
+            $kategori = Kategori::where('nama_kategori','like','%' . $keywords.'%')->get();
             return view('kategori.list', compact('kategori'));
         }
         return view('kategori.main');

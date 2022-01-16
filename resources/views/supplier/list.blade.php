@@ -4,8 +4,8 @@
             <tr class="table-primary">
                 <th>No</th>
                 <th>Nama Supplier Barang</th>
-                <th>Kota Supplier Barang</th>
                 <th>Provinsi Supplier Barang</th>
+                <th>Kota Supplier Barang</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -17,8 +17,8 @@
         <tr>
             <td>{{$i++}}</td>
             <td>{{$data->nama_supplier}}</td>
-            <td>{{$data->kota_supplier}}</td>
-            <td>{{$data->provinsi_supplier}}</td>
+            <td>{{optional($data->province)->province_name}}</td>
+            <td>{{optional($data->city)->city_name}}</td>
             <td>
             <span>
 

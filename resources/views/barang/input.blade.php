@@ -4,6 +4,10 @@
             <div class="card">
                 <h4 class="modal-title">Tambah Pesanan Baru</h4>
                     <div class="form-group">
+                        <label class="form-label"for="kode_barang">Kode Barang</label>
+                        <input type="text" class="form-control form-control-solid" name="kode_barang" id="kode_barang" value="{{$barang->kode_barang}}">
+                    </div>
+                    <div class="form-group">
                         <label class="form-label"for="nama_barang">Nama Barang</label>
                         <input type="text" class="form-control form-control-solid" name="nama_barang" id="nama_barang" value="{{$barang->nama_barang}}">
                     </div>
@@ -18,7 +22,7 @@
                     <div class="form-group">
                         <label  class="form-label"for="kategori_barang">Kategori Barang</label>
                         <select name="kategori_barang" name="kategori_barang" class="form-select" aria-label="Default select example">
-                            <option>Pilih Kategori Barang</option>
+                            <option value="">Pilih Kategori Barang</option>
                             @foreach($kategori as $kt)
                             <option value="{{$kt->id}}" {{$kt->id==$barang->id_kategori ? 'selected' : ''}}>{{ $kt->nama_kategori }}</option>
                             @endforeach
@@ -27,7 +31,7 @@
                     <div class="form-group">
                         <label  class="form-label"for="supplier_barang">Supplier Barang</label>
                         <select name="supplier_barang" name="supplier_barang" class="form-select" aria-label="Default select example">
-                            <option>Pilih Supplier Barang</option>
+                            <option value="">Pilih Supplier Barang</option>
                             @foreach($supplier as $s)
                             <option value="{{$s->id}}" {{$s->id==$barang->id_supplier ? 'selected' : ''}}>{{ $s->nama_supplier }}</option>
                             @endforeach
@@ -36,7 +40,7 @@
                 </div>
         </div>
             @if($barang->id)
-            <button type="button" class="btn btn-success" onclick="handle_save('#SubmitCreateArticleForm','#form-tambah','{{route('barang.update',$barang->id)}}','PUT','Update')" id="SubmitCreateArticleForm">Ubah</button>
+            <button type="button" class="btn btn-success" onclick="handle_save('#SubmitCreateArticleForm','#form-tambah','{{route('barang.update',$barang->id)}}','PATCH','Update')" id="SubmitCreateArticleForm">Ubah</button>
             @else
             <div class="mb-0">
             <button type="button" class="btn btn-success" onclick="handle_save('#SubmitCreateArticleForm','#form-tambah','{{route('barang.store')}}','POST','Kirim')" id="SubmitCreateArticleForm">Simpan</button>

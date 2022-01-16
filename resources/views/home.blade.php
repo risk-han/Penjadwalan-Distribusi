@@ -9,9 +9,9 @@
 
                 <div class="card-body">
                     @if(Auth::check())
-                        {{ __('You are logged in')}}
+                        {{ __('Anda masih belum login')}}
                     @else
-                        {{ __('You are not logged in')}}
+                        {{ __('Anda berhasil login')}}
                     @endif
 
                 </div>

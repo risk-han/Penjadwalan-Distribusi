@@ -5,6 +5,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 mt-3">
+            <form id="content_filter">
+                <input class="form-control" type="text" name="keywords" id="keywords" placeholder="Cari barang">
+            </form>
             <button onclick="load_input('{{route('barang.create')}}');" style="float: right;" class="btn btn-primary mb-3" type="button">
                 Tambah Barang
             </button>
